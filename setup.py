@@ -9,6 +9,5 @@ setup(name='vectorial_ui',
       author='Jacob Duffy',
       author_email='jod0007@auburn.edu',
       url='https://github.com/jduffy0121/VectorialUI',
-      scripts=['UICreator.py'],
-      packages=['vectorial_ui']
+      scripts=['UICreator.py']
      )
