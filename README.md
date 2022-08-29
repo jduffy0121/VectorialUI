@@ -1,5 +1,8 @@
 # VectorialUI
 
+
+Do all of the following installations before running the program  
+
 ## Astropy Installation
 *Used in FileRunner.py*  
   
@@ -37,3 +40,14 @@ Link: [Pyvectorial git](https://github.com/sjoset/pyvectorial)
 Link: [PyQt website](https://pypi.org/project/PyQt5/)
 
 1. ```pip install pyqt5```
+
+## VectorialUI Installation
+
+1. ```git clone git@github.com:jduffy0121/VectorialUI.git``
+
+2. ```cd VectorialUI/```
+
+3. ```pip install .``` or ```pip install -e .``` for development mode
+
+# To run the UI
+ ```./UICreator.py```
