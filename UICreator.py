@@ -10,8 +10,11 @@
 #Author: Jacob Duffy
 #Version: 8/29/2022
 
-import FileCreator
-import FileRunner
+#from FileCreator import removeFile
+#from FileRunner import getFragSputter, getRadialPlots, getColumnDensity, get3DColumnDensity, get3DColumnDensityCentered
+#from FileRunner import getPrintRadialDensity, getPrintColumnDensity, getAgreementCheck, valueTest, runManualProgram
+#from FileRunner import runFileYamlProgram, runFilePickleProgram, pickleTest, fileTest
+from utils import *
 import sys
 import os
 from dataclasses import dataclass
@@ -81,15 +84,15 @@ class PlotGraphs(FigureCanvasQTAgg):
     #Updates the graph figure that is created in __init__ to the correct graph based on graphType.
     def graph(self):
         if(self.graphType == "frag sput"):
-            self.figure = FileRunner.getFragSputter(self.vmc, self.vmr)
+            self.figure = getFragSputter(self.vmc, self.vmr)
         if(self.graphType == "radial"):
-            self.figure = FileRunner.getRadialPlots(self.vmc, self.vmr)
+            self.figure = getRadialPlots(self.vmc, self.vmr)
         if(self.graphType == "column dens"):
-            self.figure = FileRunner.getColumnDensity(self.vmc, self.vmr)
+            self.figure = getColumnDensity(self.vmc, self.vmr)
         if(self.graphType == "3d column dens"):
-            self.figure = FileRunner.get3DColumnDensity(self.vmc, self.vmr)
+            self.figure = get3DColumnDensity(self.vmc, self.vmr)
         if(self.graphType == "3d column dens cent"):
-            self.figure = FileRunner.get3DColumnDensityCentered(self.vmc, self.vmr)
+            self.figure = get3DColumnDensityCentered(self.vmc, self.vmr)
         self.draw() #Draws the figure
 
 #Extra results
@@ -105,23 +108,23 @@ class ExtraResults(QWidget):
     def initUI(self):
         global CurrentUIRun
         self.radDensityBox = QListWidget(self)
-        self.radDensityBox.addItem(FileRunner.getPrintRadialDensity(self.vmr))
+        self.radDensityBox.addItem(getPrintRadialDensity(self.vmr))
         self.radDensityBox.setGeometry(2000,400,400,2000)
         self.radDensityBox.move(10,10)
         self.columnDesityBox = QListWidget(self)
-        self.columnDesityBox.addItem(FileRunner.getPrintColumnDensity(self.vmr))
+        self.columnDesityBox.addItem(getPrintColumnDensity(self.vmr))
         self.columnDesityBox.setGeometry(2000,400,400,2000)
         self.columnDesityBox.move(425,10)
 
         #Test to see if pickle input was used to only add the agreement to the output
         if (CurrentUIRun.PickleInputs):
             self.agreementCheckBox = QListWidget(self)
-            self.agreementCheckBox.addItem(FileRunner.getAgreementCheck(self.vmr))
+            self.agreementCheckBox.addItem(getAgreementCheck(self.vmr))
             self.agreementCheckBox.setGeometry(110,600,600,110)
             self.agreementCheckBox.move(850,10)
         else:
             self.agreementCheckBox = QListWidget(self)
-            self.agreementCheckBox.addItem(FileRunner.getAgreementCheck(self.vmr))
+            self.agreementCheckBox.addItem(getAgreementCheck(self.vmr))
             self.agreementCheckBox.addItem(CurrentUIRun.ApertureChecks)
             self.agreementCheckBox.setGeometry(200,600,600,200)
             self.agreementCheckBox.move(850,10)
@@ -453,17 +456,17 @@ class TimeVarWindow(QWidget):
         #Declarations if sine time variation is selected
         if(self.sineButton.isChecked()):
             CurrentUIRun.TimeVariationType = 'sine wave'
-            if(FileRunner.valueTest(self.sineAmpBox.text(), 'float')):
+            if(valueTest(self.sineAmpBox.text(), 'float')):
                 CurrentUIRun.SinAmp = float(self.sineAmpBox.text())
             else:
                 self.popUpWin('incorrect data', 'Amplitude')
                 return
-            if(FileRunner.valueTest(self.sinePeriodBox.text(), 'float')):
+            if(valueTest(self.sinePeriodBox.text(), 'float')):
                 CurrentUIRun.SinPer = float(self.sinePeriodBox.text())
             else:
                 self.popUpWin('incorrect data', 'Period')
                 return
-            if(FileRunner.valueTest(self.sineDeltaBox.text(), 'float')):
+            if(valueTest(self.sineDeltaBox.text(), 'float')):
                 CurrentUIRun.SinDelta = float(self.sineDeltaBox.text())
             else:
                 self.popUpWin('incorrect data', 'Delta')
@@ -474,17 +477,17 @@ class TimeVarWindow(QWidget):
         #Declarations if gaussian time variation is selected
         elif(self.gausButton.isChecked()):
             CurrentUIRun.TimeVariationType = 'gaussian'
-            if(FileRunner.valueTest(self.gausAmpBox.text(), 'float')):
+            if(valueTest(self.gausAmpBox.text(), 'float')):
                 CurrentUIRun.GausAmp = float(self.gausAmpBox.text())
             else:
                 self.popUpWin('incorrect data', 'Amplitude')
                 return
-            if(FileRunner.valueTest(self.gausStdBox.text(), 'float')):
+            if(valueTest(self.gausStdBox.text(), 'float')):
                 CurrentUIRun.GausSTD = float(self.gausStdBox.text())
             else:
                 self.popUpWin('incorrect data', 'Standard Deviation')
                 return
-            if(FileRunner.valueTest(self.gausTPBox.text(), 'float')):
+            if(valueTest(self.gausTPBox.text(), 'float')):
                 CurrentUIRun.GausT_Max = float(self.gausTPBox.text())
             else:
                 self.popUpWin('incorrect data', 'Time at Peak')
@@ -495,17 +498,17 @@ class TimeVarWindow(QWidget):
         #Declarations if square time variation is selected
         elif(self.squareButton.isChecked()):
             CurrentUIRun.TimeVariationType = 'square pulse'
-            if(FileRunner.valueTest(self.squareAmpBox.text(), 'float')):
+            if(valueTest(self.squareAmpBox.text(), 'float')):
                 CurrentUIRun.SquareAmp = float(self.squareAmpBox.text())
             else:
                 self.popUpWin('incorrect data', 'Amplitude')
                 return
-            if(FileRunner.valueTest(self.squareDurBox.text(), 'float')):
+            if(valueTest(self.squareDurBox.text(), 'float')):
                 CurrentUIRun.SquareDur = float(self.squareDurBox.text())
             else:
                 self.popUpWin('incorrect data', 'Duration')
                 return
-            if(FileRunner.valueTest(self.squareTSPBox.text(), 'float')):
+            if(valueTest(self.squareTSPBox.text(), 'float')):
                 CurrentUIRun.SquareT_Start = float(self.squareTSPBox.text())
             else:
                 self.popUpWin('incorrect data', 'Start of Pulse')
@@ -971,7 +974,7 @@ class App(QMainWindow):
         if(self.manProgramButton.isChecked()):
 
             #Param Declarations
-            if(FileRunner.valueTest(self.baseQBox.text(), 'float')): #Test to see if the manual input is a correct type for all data required
+            if(valueTest(self.baseQBox.text(), 'float')): #Test to see if the manual input is a correct type for all data required
                 CurrentUIRun.BaseQ = float(self.baseQBox.text())
             else:
                 self.popUpWin('incorrect data', 'Base Q') #Throws an error if any data is an incorrect type and exits the program
@@ -979,22 +982,22 @@ class App(QMainWindow):
 
             #Parent Declarations
             CurrentUIRun.ParentName = self.parNameBox.text()
-            if(FileRunner.valueTest(self.outVBox.text(), 'float')):
+            if(valueTest(self.outVBox.text(), 'float')):
                 CurrentUIRun.VOutflow = float(self.outVBox.text())
             else:
                 self.popUpWin('incorrect data', 'Outflow Velocity')
                 return
-            if(FileRunner.valueTest(self.tauDBox.text(), 'float')):
+            if(valueTest(self.tauDBox.text(), 'float')):
                 CurrentUIRun.TauD = float(self.tauDBox.text())
             else:
                 self.popUpWin('incorrect data', 'Tau_D')
                 return
-            if(FileRunner.valueTest(self.sigmaBox.text(), 'float')):
+            if(valueTest(self.sigmaBox.text(), 'float')):
                 CurrentUIRun.Sigma = float(self.sigmaBox.text())
             else:
                 self.popUpWin('incorrect data', 'Sigma')
                 return
-            if(FileRunner.valueTest(self.t_DBox.text(), 'float')):
+            if(valueTest(self.t_DBox.text(), 'float')):
                 CurrentUIRun.TtoDRatio = float(self.t_DBox.text())
             else:
                 self.popUpWin('incorrect data', 'T to D Ratio')
@@ -1002,12 +1005,12 @@ class App(QMainWindow):
 
             #Fragment Declarations
             CurrentUIRun.FragmentName = self.fragNameBox.text()
-            if(FileRunner.valueTest(self.vPhotoBox.text(), 'float')):
+            if(valueTest(self.vPhotoBox.text(), 'float')):
                 CurrentUIRun.VPhoto = float(self.vPhotoBox.text())
             else:
                 self.popUpWin('incorrect data', 'VPhoto')
                 return
-            if(FileRunner.valueTest(self.tauTFragBox.text(), 'float')):
+            if(valueTest(self.tauTFragBox.text(), 'float')):
                 CurrentUIRun.TauT = float(self.tauTFragBox.text())
             else:
                 self.popUpWin('incorrect data', 'Tau_T')
@@ -1015,7 +1018,7 @@ class App(QMainWindow):
 
             #Comet Declarations
             CurrentUIRun.CometName = self.cometNameBox.text()
-            if(FileRunner.valueTest(self.rHBox.text(), 'float')):
+            if(valueTest(self.rHBox.text(), 'float')):
                 CurrentUIRun.Rh = float(self.rHBox.text())
             else:
                 self.popUpWin('incorrect data', 'Rh')
@@ -1046,26 +1049,26 @@ class App(QMainWindow):
                 return
 
             #Grid Declarations
-            if(FileRunner.valueTest(self.aPointsBox.text(), 'int')):
+            if(valueTest(self.aPointsBox.text(), 'int')):
                 CurrentUIRun.AngularPoints = int(self.aPointsBox.text())
             else:
                 self.popUpWin('incorrect data', 'Angular Points')
                 return
-            if(FileRunner.valueTest(self.radPointsBox.text(), 'int')):
+            if(valueTest(self.radPointsBox.text(), 'int')):
                 CurrentUIRun.RadialPoints = int(self.radPointsBox.text())
             else:
                 self.popUpWin('incorrect data', 'Radial Points')
                 return
-            if(FileRunner.valueTest(self.radSubBox.text(), 'int')):
+            if(valueTest(self.radSubBox.text(), 'int')):
                 CurrentUIRun.RadialSubsteps = int(self.radSubBox.text())
             else:
                 self.popUpWin('incorrect data', 'Radial Substeps')
                 return
             
             #Runs the program
-            vmc, vmr = FileRunner.runManualProgram(CurrentUIRun) #Runs the manuel program, creating a yaml file, vmc and vmr in FileCreator.py and FileRunner.py
+            vmc, vmr = runManualProgram(CurrentUIRun) #Runs the manuel program, creating a yaml file, vmc and vmr in FileCreator.py and FileRunner.py
             if(self.keepFile.isChecked() == False): #Removes the file if the keepFile == False
-                FileCreator.removeFile('pyvectorial.yaml')
+                removeFile('pyvectorial.yaml')
             if(vmc == False): #Test to see if the program was able to run properly
                 self.popUpWin('incorrect file run')
                 return
@@ -1081,10 +1084,10 @@ class App(QMainWindow):
             if (os.path.isfile(f"{CurrentUIRun.YamlFile}") == False): #Test to see if the user uploaded a file
                 self.popUpWin('no file')
                 return
-            testResult, message = FileRunner.fileTest(CurrentUIRun.YamlFile, CurrentUIRun) #Gets the bool test result and a message if testResult = False
+            testResult, message = fileTest(CurrentUIRun.YamlFile, CurrentUIRun) #Gets the bool test result and a message if testResult = False
             if (testResult): #Reads the file to see if it is formatted properly  
                 #Runs the program
-                vmc, vmr = FileRunner.runFileYamlProgram(CurrentUIRun.YamlFile, CurrentUIRun) #Runs the yaml file, creating a vmc and vmr in FileRunner.py
+                vmc, vmr = runFileYamlProgram(CurrentUIRun.YamlFile, CurrentUIRun) #Runs the yaml file, creating a vmc and vmr in FileRunner.py
                 if(vmc == False):
                     self.popUpWin('incorrect file run')
                     return
@@ -1103,11 +1106,11 @@ class App(QMainWindow):
             if (os.path.exists(f"{CurrentUIRun.PyvComaPickle}") == False): #Test to see if the user uploaded a file
                 self.popUpWin('no file')
                 return
-            if(FileRunner.pickleTest(CurrentUIRun.PyvComaPickle) == False): #Test to see if pyvectorial can read the pickle in FileRunner.py
+            if(pickleTest(CurrentUIRun.PyvComaPickle) == False): #Test to see if pyvectorial can read the pickle in FileRunner.py
                 self.popUpWin('incorrect pickle')
                 return
             #Runs the program
-            vmc, vmr = FileRunner.runFilePickleProgram(CurrentUIRun.PyvComaPickle) #Runs the pickle file, creating a default vmc and proper vmr in FileRunner.py
+            vmc, vmr = runFilePickleProgram(CurrentUIRun.PyvComaPickle) #Runs the pickle file, creating a default vmc and proper vmr in FileRunner.py
             self.popUpWin('success')
             self.Win = ResultsWindow(vmc, vmr) 
             self.Win.show() 

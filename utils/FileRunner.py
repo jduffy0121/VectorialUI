@@ -5,7 +5,7 @@
 #Author: Jacob Duffy
 #Version: 8/29/2022
 
-import FileCreator
+from .FileCreator import newFileManual, newFileInputs
 import io
 import yaml
 import pickle
@@ -34,7 +34,7 @@ def fileRun(fileName, CurrentUIRun):
 
 #Method def for running the program manually
 def runManualProgram(CurrentUIRun):
-    FileCreator.newFileManual(CurrentUIRun) #Creates a new yaml file
+    newFileManual(CurrentUIRun) #Creates a new yaml file
     return fileRun('pyvectorial.yaml', CurrentUIRun) #Runs the program, returning a vmc and vmr
 
 #Method def for running the program with file input (yaml)
@@ -279,5 +279,5 @@ def fileTest(filePath, CurrentUIRun):
         dict['etc']['show_fragment_sputter'] = True
         dict['etc']['show_radial_plots'] = True
 
-        FileCreator.newFileInputs(filePath, dict) #Creates a new yaml file with the new dict with the etc section
+        newFileInputs(filePath, dict) #Creates a new yaml file with the new dict with the etc section
     return True, None #Returns no messgae as the test passed, no dict value caused an error throw

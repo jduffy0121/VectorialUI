@@ -1,0 +1,7 @@
+README.md
+setup.py
+bin/UICreator.py
+vectorial_ui.egg-info/PKG-INFO
+vectorial_ui.egg-info/SOURCES.txt
+vectorial_ui.egg-info/dependency_links.txt
+vectorial_ui.egg-info/top_level.txt
