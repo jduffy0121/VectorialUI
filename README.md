@@ -6,6 +6,7 @@
 This program looks at cometary data regarding particles that radiate from the coma of the comet before and after coliding with a photon.  
 A vectorial model is used to calculate this data (all found in pyvectorial).   
 This UI allows users to **manually input** data, use a **pickle file**, or use a **yaml file** to run the calculations contained in pyvectorial.  
+The UI is created through PyQt5.  
 This package is avaible for anyone to download.  
 
 *Note: do all of the following installations before attempting to run the program*  
@@ -58,3 +59,5 @@ Link: [PyQt website](https://pypi.org/project/PyQt5/)
 
 ## To run the UI
  ```./UICreator.py```
+  
+ *Note: Test file inputs for formatting a yaml/pickle file are found in utils*
