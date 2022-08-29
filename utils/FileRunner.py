@@ -5,7 +5,6 @@
 #Author: Jacob Duffy
 #Version: 8/29/2022
 
-from .FileCreator import newFileManual, newFileInputs
 import io
 import yaml
 import pickle
@@ -13,8 +12,9 @@ import astropy.units as u
 import pyvectorial as pyv
 import sbpy.activity as sba
 from datetime import datetime
-from astropy.visualization import quantity_support
 from contextlib import redirect_stdout
+from astropy.visualization import quantity_support
+from .FileCreator import newFileManual, newFileInputs
 
 #Run methods
 
@@ -122,6 +122,7 @@ def AgreementCheck(vmr):
     print(f"\tTheoretical total number of fragments in coma:\t {vmr.num_fragments_theory:.7e}")
     print(f"\tTotal number of fragments from density grid integration:\t {vmr.num_fragments_grid:.7e}")
 
+#Copy of a method in pyvectorial, fixed a formatting issue
 def ApertureCheck(coma):
     f_theory = coma.vmr.num_fragments_theory
     ap2 = sba.CircularAperture((coma.vmr.max_grid_radius.value) * u.m)
