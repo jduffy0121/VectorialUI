@@ -17,7 +17,7 @@ Link: [Astropy website](https://docs.astropy.org/en/stable/install.html)
 
 1. ```conda install astropy ```
 
-2. ``` x conda install -c conda-forge -c defaults scipy matplotlib \ h5py beautifulsoup4 html5lib bleach pandas sortedcontainers \ pytz setuptools mpmath bottleneck jplephem asdf pyarrow ```
+2. ```conda install -c conda-forge -c defaults scipy matplotlib \ h5py beautifulsoup4 html5lib bleach pandas sortedcontainers \ pytz setuptools mpmath bottleneck jplephem asdf pyarrow ```
 
 ## Sbpy Installation
 *Used in FileRunner.py*  
@@ -28,7 +28,7 @@ Link: [Sbpy git](https://github.com/sjoset/sbpy)
 
 2. ```cd sbpy/```
 
-3. ``` python setup.py develop --user ```
+3. ```python setup.py develop --user ```
 
 ## Pyvectorial Installation
 *Used in FileRunner.py*  
