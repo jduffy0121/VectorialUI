@@ -2,8 +2,8 @@
 
 
 Do all of the following installations before running the program  
-
-## Astropy Installation
+  
+### Astropy Installation
 *Used in FileRunner.py*  
   
 Link: [Astropy website](https://docs.astropy.org/en/stable/install.html)  
@@ -12,7 +12,7 @@ Link: [Astropy website](https://docs.astropy.org/en/stable/install.html)
 
 2. ``` x conda install -c conda-forge -c defaults scipy matplotlib \ h5py beautifulsoup4 html5lib bleach pandas sortedcontainers \ pytz setuptools mpmath bottleneck jplephem asdf pyarrow ```
 
-## Sbpy Installation
+### Sbpy Installation
 *Used in FileRunner.py*  
   
 Link: [Sbpy git](https://github.com/sjoset/sbpy)
@@ -23,7 +23,7 @@ Link: [Sbpy git](https://github.com/sjoset/sbpy)
 
 3. ``` python setup.py develop --user ```
 
-## Pyvectorial Installation
+### Pyvectorial Installation
 *Used in FileRunner.py*  
   
 Link: [Pyvectorial git](https://github.com/sjoset/pyvectorial)
@@ -34,20 +34,20 @@ Link: [Pyvectorial git](https://github.com/sjoset/pyvectorial)
 
 3. ```pip install .``` or ```pip install -e .``` for development mode
 
-## PyQt5 Installation
+### PyQt5 Installation
 *Used in UICreator.py*  
   
 Link: [PyQt website](https://pypi.org/project/PyQt5/)
 
 1. ```pip install pyqt5```
 
-## VectorialUI Installation
+### VectorialUI Installation
 
-1. ```git clone git@github.com:jduffy0121/VectorialUI.git``
+1. ```git clone git@github.com:jduffy0121/VectorialUI.git```
 
-2. ```cd VectorialUI/```
+2. ```cd vectorial_ui/```
 
 3. ```pip install .``` or ```pip install -e .``` for development mode
 
-# To run the UI
+## To run the UI
  ```./UICreator.py```
