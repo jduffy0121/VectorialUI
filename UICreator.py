@@ -10,10 +10,6 @@
 #Author: Jacob Duffy
 #Version: 8/29/2022
 
-#from FileCreator import removeFile
-#from FileRunner import getFragSputter, getRadialPlots, getColumnDensity, get3DColumnDensity, get3DColumnDensityCentered
-#from FileRunner import getPrintRadialDensity, getPrintColumnDensity, getAgreementCheck, valueTest, runManualProgram
-#from FileRunner import runFileYamlProgram, runFilePickleProgram, pickleTest, fileTest
 from utils import *
 import sys
 import os
