@@ -2,6 +2,7 @@
 
 ## Astropy Installation
 *Used in FileRunner.py*  
+  
 Link: [Astropy website](https://docs.astropy.org/en/stable/install.html)  
 
 1. ```conda install astropy ```
@@ -10,6 +11,7 @@ Link: [Astropy website](https://docs.astropy.org/en/stable/install.html)
 
 ## Sbpy Installation
 *Used in FileRunner.py*  
+  
 Link: [Sbpy git](https://github.com/sjoset/sbpy)
 
 1. ```git clone git@github.com:sjoset/sbpy.git```
@@ -20,6 +22,7 @@ Link: [Sbpy git](https://github.com/sjoset/sbpy)
 
 ## Pyvectorial Installation
 *Used in FileRunner.py*  
+  
 Link: [Pyvectorial git](https://github.com/sjoset/pyvectorial)
 
 1. ```git clone git@github.com:sjoset/pyvectorial.git```
@@ -30,6 +33,7 @@ Link: [Pyvectorial git](https://github.com/sjoset/pyvectorial)
 
 ## PyQt5 Installation
 *Used in UICreator.py*  
+  
 Link: [PyQt website](https://pypi.org/project/PyQt5/)
 
 1. ```pip install pyqt5```
