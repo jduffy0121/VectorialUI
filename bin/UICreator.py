@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 #Driver program to create a UI to read in vectorial model data for comet analysis
 #and create multiple results graphs using MatPlotLib.
 #Uses PyQt5 as the interface to create the UI.
@@ -6,7 +8,7 @@
 #This version is formatted for MacOS
 #
 #Author: Jacob Duffy
-#Version: 8/25/2022
+#Version: 8/29/2022
 
 import FileCreator
 import FileRunner
