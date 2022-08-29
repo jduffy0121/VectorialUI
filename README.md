@@ -5,10 +5,10 @@
   
 This program looks at cometary data regarding particles that radiate from the coma of the comet before and after coliding with a photon.  
 A vectorial model is used to calculate this data (all found in pyvectorial).   
-This UI allows users to manually input data, use a pickle, or use a yaml file to run the calculations contained in pyvectorial.  
+This UI allows users to **manually input** data, use a **pickle file**, or use a **yaml file** to run the calculations contained in pyvectorial.  
 This package is avaible for anyone to download.  
 
-*Note, do all of the following installations before attempting to run the program*  
+*Note: do all of the following installations before attempting to run the program*  
   
 ## Astropy Installation
 *Used in FileRunner.py*  
