@@ -10,13 +10,13 @@
 #Author: Jacob Duffy
 #Version: 8/29/2022
 
-from utils import *
 import sys
 import os
+from utils import *
 from dataclasses import dataclass
+from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QListWidget, QTabWidget
 from PyQt5.QtWidgets import QLineEdit, QMessageBox, QLabel, QCheckBox, QFileDialog, QVBoxLayout, QRadioButton
-from PyQt5.QtGui import QFont
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT
 from matplotlib.figure import Figure
 
