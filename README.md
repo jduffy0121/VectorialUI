@@ -45,7 +45,7 @@ Link: [Pyvectorial git](https://github.com/sjoset/pyvectorial)
   
 Link: [PyQt website](https://pypi.org/project/PyQt5/)
 
-1. ```pip install pyqt5```
+1. ```pip install PyQt5```
 
 ## VectorialUI Installation
 
